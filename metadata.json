@@ -1,0 +1,6 @@
+{
+  "name": "JYK Cleaning Services",
+  "description": "Hard Work. Honest Prices. A Family You Can Trust. Professional cleaning services in Phoenix, Arizona by the Saenz family.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
