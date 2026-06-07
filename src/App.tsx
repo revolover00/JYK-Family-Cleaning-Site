@@ -3,6 +3,7 @@ import {
   motion, 
   AnimatePresence 
 } from 'motion/react';
+import { CountUp, Typewriter } from './components/CountUp';
 import { 
   Phone, 
   MapPin, 
@@ -321,22 +322,28 @@ export default function App() {
 
             {/* Small Quick-Facts Bar */}
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mt-12 flex flex-wrap gap-8 py-4 border-t border-white/[0.04] w-full max-w-xl text-left"
               id="hero-facts"
             >
               <div>
-                <p className="font-condensed font-black uppercase text-2xl text-secondary-accent tracking-tighter">SINCE 2017</p>
+                <p className="font-condensed font-black uppercase text-2xl text-secondary-accent tracking-tighter">
+                  SINCE <CountUp value={2017} duration={900} />
+                </p>
                 <p className="text-xs text-text-secondary tracking-wide font-sans uppercase">Phoenix Standard</p>
               </div>
               <div className="border-l border-white/10 pl-6">
-                <p className="font-condensed font-black uppercase text-2xl text-secondary-accent tracking-tighter">12+ YEARS</p>
+                <p className="font-condensed font-black uppercase text-2xl text-secondary-accent tracking-tighter">
+                  <CountUp value={12} suffix="+" duration={900} /> YEARS
+                </p>
                 <p className="text-xs text-text-secondary tracking-wide font-sans uppercase">Combined Experience</p>
               </div>
               <div className="border-l border-white/10 pl-6">
-                <p className="font-condensed font-black uppercase text-2xl text-secondary-accent tracking-tighter">6 AM START</p>
+                <p className="font-condensed font-black uppercase text-2xl text-secondary-accent tracking-tighter">
+                  <CountUp value={6} suffix=" AM" duration={900} /> START
+                </p>
                 <p className="text-xs text-text-secondary tracking-wide font-sans uppercase">Early Bird Service</p>
               </div>
             </motion.div>
@@ -420,7 +427,13 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Story Text */}
-            <div className="lg:col-span-7 flex flex-col items-start">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-7 flex flex-col items-start"
+            >
               
               <div className="flex items-center gap-3 mb-1">
                 <span className="h-[2px] w-8 bg-primary-accent"></span>
@@ -452,23 +465,36 @@ export default function App() {
               {/* Dynamic stats row inside story */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-10 w-full pt-8 border-t border-white/[0.04]">
                 <div>
-                  <p className="font-condensed font-black text-4xl text-primary-accent">2017</p>
+                  <p className="font-condensed font-black text-4xl text-primary-accent">
+                    <CountUp value={2017} duration={1200} />
+                  </p>
                   <p className="text-xs text-text-secondary uppercase tracking-widest font-sans mt-1">Founded in Phoenix</p>
                 </div>
                 <div>
-                  <p className="font-condensed font-black text-4xl text-primary-accent">6 KIDS</p>
+                  <p className="font-condensed font-black text-4xl text-primary-accent">
+                    <CountUp value={6} suffix=" KIDS" duration={1200} />
+                  </p>
                   <p className="text-xs text-text-secondary uppercase tracking-widest font-sans mt-1">Our Motivation</p>
                 </div>
                 <div className="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-white/5 pt-4 sm:pt-0 sm:pl-6">
-                  <p className="font-condensed font-black text-4xl text-primary-accent">100%</p>
+                  <p className="font-condensed font-black text-4xl text-primary-accent">
+                    <CountUp value={100} suffix="%" duration={1200} />
+                  </p>
                   <p className="text-xs text-text-secondary uppercase tracking-widest font-sans mt-1">Guaranteed Satisfaction</p>
                 </div>
               </div>
 
-            </div>
+            </motion.div>
 
             {/* Custom Interactive Graphical Initialism Card */}
-            <div className="lg:col-span-5 relative" id="story-family-block">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-5 relative" 
+              id="story-family-block"
+            >
               <div className="absolute inset-0 bg-primary-accent/5 rounded-lg blur-2xl pointer-events-none" />
               
               <div className="relative bg-card-bg/60 border border-white/[0.05] p-6 rounded shadow-xl hover:border-primary-accent/30 transition-all duration-300">
@@ -525,7 +551,7 @@ export default function App() {
                 </div>
               </div>
 
-            </div>
+            </motion.div>
 
           </div>
 
@@ -539,7 +565,13 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           
-          <div className="max-w-3xl mb-16 flex flex-col items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-16 flex flex-col items-start"
+          >
             <div className="flex items-center gap-3 mb-1">
               <span className="h-[2px] w-8 bg-primary-accent"></span>
               <span className="text-secondary-accent font-condensed font-bold uppercase tracking-widest text-xs">Our Core Standards</span>
@@ -548,12 +580,19 @@ export default function App() {
               WHY CHOOSE JYK CLEANING?
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-primary-accent to-secondary-accent"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             
             {/* Block 1: Family Owned */}
-            <div className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" id="why-block-1">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" 
+              id="why-block-1"
+            >
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-accent to-secondary-accent flex items-center justify-center shadow-lg shadow-primary-accent/20 mb-6">
                 <Home className="w-6 h-6 text-white" />
               </div>
@@ -563,10 +602,17 @@ export default function App() {
               <p className="text-text-secondary text-sm font-sans leading-relaxed text-left">
                 Not a detached corporate franchise. We are a tight-knit family of 8, treating your physical house, rooms, and belongings with premium personal respect.
               </p>
-            </div>
+            </motion.div>
 
             {/* Block 2: Affordable Pricing */}
-            <div className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" id="why-block-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" 
+              id="why-block-2"
+            >
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-accent to-secondary-accent flex items-center justify-center shadow-lg shadow-primary-accent/20 mb-6">
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
@@ -576,10 +622,17 @@ export default function App() {
               <p className="text-text-secondary text-sm font-sans leading-relaxed text-left">
                 Hard working family, honest prices and no hidden administrative fee add-ons. We offer high-tier cleaning that fits comfortably into standard household budgets.
               </p>
-            </div>
+            </motion.div>
 
             {/* Block 3: Early start */}
-            <div className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" id="why-block-3">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" 
+              id="why-block-3"
+            >
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-accent to-secondary-accent flex items-center justify-center shadow-lg shadow-primary-accent/20 mb-6">
                 <Clock className="w-6 h-6 text-white" />
               </div>
@@ -589,10 +642,17 @@ export default function App() {
               <p className="text-text-secondary text-sm font-sans leading-relaxed text-left">
                 We respect your active schedule. Offering slots starting as early as 6:00 AM so we can get your home spotless before your workday even begins.
               </p>
-            </div>
+            </motion.div>
 
             {/* Block 4: Detail Oriented */}
-            <div className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" id="why-block-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="bg-card-bg/40 hover:bg-card-bg/60 border border-white/[0.03] hover:border-primary-accent/35 p-6 rounded transition-all duration-300" 
+              id="why-block-4"
+            >
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-accent to-secondary-accent flex items-center justify-center shadow-lg shadow-primary-accent/20 mb-6">
                 <Shield className="w-6 h-6 text-white" />
               </div>
@@ -602,7 +662,7 @@ export default function App() {
               <p className="text-text-secondary text-sm font-sans leading-relaxed text-left">
                 We are incredibly organized and reliable. We pay close attention to baseboards, dusting nodes, shelf corners, and spots other general cleaners skip.
               </p>
-            </div>
+            </motion.div>
 
           </div>
 
@@ -615,7 +675,13 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-6">
-            <div className="flex flex-col items-start">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-start"
+            >
               <div className="flex items-center gap-3 mb-1">
                 <span className="h-[2px] w-8 bg-primary-accent"></span>
                 <span className="text-secondary-accent font-condensed font-bold uppercase tracking-widest text-xs">Pragmatic & Precise Options</span>
@@ -624,7 +690,7 @@ export default function App() {
                 OUR SPECIFIC SERVICES
               </h2>
               <div className="w-16 h-1 bg-gradient-to-r from-primary-accent to-secondary-accent"></div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-wrap gap-2 uppercase font-condensed tracking-wider ml-0 sm:ml-auto">
               <button 
@@ -661,47 +727,55 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="services-grid">
-            {services
-              .filter(s => {
-                if (activeTab === 'all') return true;
-                if (activeTab === 'residential') return ['regular', 'deep', 'moveout', 'organized'].includes(s.id);
-                if (activeTab === 'specialty') return ['construction', 'commercial', 'windows', 'onetime'].includes(s.id);
-                return true;
-              })
-              .map((service) => (
-                <div 
-                  key={service.id}
-                  className="bg-card-bg flex flex-col justify-between border-l-4 border-l-primary-accent border border-y-white/[0.02] border-r-white/[0.02] hover:border-y-primary-accent/[0.15] hover:border-r-primary-accent/[0.15] p-6 rounded-sm shadow-lg hover:shadow-primary-accent/10 hover:-translate-y-1.5 transition-all duration-300"
-                  id={`service-card-${service.id}`}
-                >
-                  <div>
-                    <div className="mb-4 flex justify-between items-start">
-                      <div className="p-2.5 bg-primary-bg rounded border border-white/[0.05]">
-                        {service.icon}
+            <AnimatePresence mode="popLayout">
+              {services
+                .filter(s => {
+                  if (activeTab === 'all') return true;
+                  if (activeTab === 'residential') return ['regular', 'deep', 'moveout', 'organized'].includes(s.id);
+                  if (activeTab === 'specialty') return ['construction', 'commercial', 'windows', 'onetime'].includes(s.id);
+                  return true;
+                })
+                .map((service, index) => (
+                  <motion.div 
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.25) }}
+                    key={service.id}
+                    className="bg-card-bg flex flex-col justify-between border-l-4 border-l-primary-accent border border-y-white/[0.02] border-r-white/[0.02] hover:border-y-primary-accent/[0.15] hover:border-r-primary-accent/[0.15] p-6 rounded-sm shadow-lg hover:shadow-primary-accent/10 hover:-translate-y-1.5 transition-all duration-300"
+                    id={`service-card-${service.id}`}
+                  >
+                    <div>
+                      <div className="mb-4 flex justify-between items-start">
+                        <div className="p-2.5 bg-primary-bg rounded border border-white/[0.05]">
+                          {service.icon}
+                        </div>
+                        <span className="text-[10px] font-mono opacity-25 uppercase tracking-widest bg-white/[0.04] px-2 py-1 rounded">JYK Code #{service.id.substring(0, 3)}</span>
                       </div>
-                      <span className="text-[10px] font-mono opacity-25 uppercase tracking-widest bg-white/[0.04] px-2 py-1 rounded">JYK Code #{service.id.substring(0, 3)}</span>
+
+                      <h3 className="font-condensed font-black uppercase text-xl text-text-primary tracking-wide text-left mb-2">
+                        {service.title}
+                      </h3>
+                      
+                      <p className="text-text-secondary text-xs sm:text-sm font-sans text-left leading-relaxed mb-6">
+                        {service.desc}
+                      </p>
                     </div>
 
-                    <h3 className="font-condensed font-black uppercase text-xl text-text-primary tracking-wide text-left mb-2">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="text-text-secondary text-xs sm:text-sm font-sans text-left leading-relaxed mb-6">
-                      {service.desc}
-                    </p>
-                  </div>
+                    <div className="pt-4 border-t border-white/[0.04] space-y-2">
+                      {service.features.map((feat, index) => (
+                        <div key={index} className="flex gap-2 items-start text-[11px] text-text-secondary font-sans leading-none">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary-accent shrink-0" />
+                          <span className="text-left">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
 
-                  <div className="pt-4 border-t border-white/[0.04] space-y-2">
-                    {service.features.map((feat, index) => (
-                      <div key={index} className="flex gap-2 items-start text-[11px] text-text-secondary font-sans leading-none">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-secondary-accent shrink-0" />
-                        <span className="text-left">{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                </div>
-            ))}
+                  </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
 
         </div>
@@ -714,7 +788,13 @@ export default function App() {
         
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           
-          <div className="max-w-3xl mb-20 flex flex-col items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-20 flex flex-col items-start"
+          >
             <div className="flex items-center gap-3 mb-1">
               <span className="h-[2px] w-8 bg-primary-accent"></span>
               <span className="text-secondary-accent font-condensed font-bold uppercase tracking-widest text-xs">A Fast, Three-Step Flow</span>
@@ -723,15 +803,22 @@ export default function App() {
               HOW IT WORKS
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-primary-accent to-secondary-accent"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             
             {/* Step 1 */}
-            <div className="relative group flex flex-col items-start" id="step-card-01">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative group flex flex-col items-start" 
+              id="step-card-01"
+            >
               {/* Massive watermarked large number */}
               <div className="absolute top-[-30px] left-0 font-condensed font-black text-8xl text-primary-accent opacity-15 select-none pointer-events-none group-hover:scale-110 transition-transform duration-300">
-                01
+                <CountUp value={1} prefix="0" duration={800} />
               </div>
               
               <div className="relative pt-12 text-left">
@@ -742,12 +829,19 @@ export default function App() {
                   Call or text us with details about your space. You can utilize our online pricing dial or direct line. We provide a completely free, fast estimate within minutes.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Step 2 */}
-            <div className="relative group flex flex-col items-start" id="step-card-02">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="relative group flex flex-col items-start" 
+              id="step-card-02"
+            >
               <div className="absolute top-[-30px] left-0 font-condensed font-black text-8xl text-primary-accent opacity-15 select-none pointer-events-none group-hover:scale-110 transition-transform duration-300">
-                02
+                <CountUp value={2} prefix="0" duration={800} />
               </div>
               
               <div className="relative pt-12 text-left">
@@ -758,12 +852,19 @@ export default function App() {
                   We load our cleaning supplies, sanitizers, and gear, and show up on schedule. Our family arrives energetic, clear on direction, and strictly focused.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Step 3 */}
-            <div className="relative group flex flex-col items-start" id="step-card-03">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative group flex flex-col items-start" 
+              id="step-card-03"
+            >
               <div className="absolute top-[-30px] left-0 font-condensed font-black text-8xl text-primary-accent opacity-15 select-none pointer-events-none group-hover:scale-110 transition-transform duration-300">
-                03
+                <CountUp value={3} prefix="0" duration={800} />
               </div>
               
               <div className="relative pt-12 text-left">
@@ -774,7 +875,7 @@ export default function App() {
                   We perform our detail checklist, polishing deep areas and resetting your house. You inspect the work. If anything isn't spotless, we rectify it instantly.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
@@ -786,7 +887,13 @@ export default function App() {
       <section id="testimonials" className="py-24 bg-primary-bg border-b border-white/[0.02] scroll-mt-12">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           
-          <div className="max-w-3xl mb-16 flex flex-col items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-16 flex flex-col items-start"
+          >
             <div className="flex items-center gap-3 mb-1">
               <span className="h-[2px] w-8 bg-primary-accent"></span>
               <span className="text-secondary-accent font-condensed font-bold uppercase tracking-widest text-xs">Real Client Feedback</span>
@@ -795,12 +902,19 @@ export default function App() {
               TESTIMONIALS
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-primary-accent to-secondary-accent"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Review 1 */}
-            <div className="bg-card-bg border border-white/[0.05] hover:border-primary-accent/30 p-6 rounded flex flex-col justify-between transition-all duration-300" id="review-card-1">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-card-bg border border-white/[0.05] hover:border-primary-accent/30 p-6 rounded flex flex-col justify-between transition-all duration-300" 
+              id="review-card-1"
+            >
               <div>
                 <div className="flex items-center gap-1.5 text-star mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -818,10 +932,17 @@ export default function App() {
                 </div>
                 <span className="text-[10px] font-mono opacity-30">Verified ✓</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Review 2 */}
-            <div className="bg-card-bg border border-white/[0.05] hover:border-primary-accent/30 p-6 rounded flex flex-col justify-between transition-all duration-300" id="review-card-2">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-card-bg border border-white/[0.05] hover:border-primary-accent/30 p-6 rounded flex flex-col justify-between transition-all duration-300" 
+              id="review-card-2"
+            >
               <div>
                 <div className="flex items-center gap-1.5 text-star mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -839,10 +960,17 @@ export default function App() {
                 </div>
                 <span className="text-[10px] font-mono opacity-30">Verified ✓</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Review 3 */}
-            <div className="bg-card-bg border border-white/[0.05] hover:border-primary-accent/30 p-6 rounded flex flex-col justify-between transition-all duration-300" id="review-card-3">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-card-bg border border-white/[0.05] hover:border-primary-accent/30 p-6 rounded flex flex-col justify-between transition-all duration-300" 
+              id="review-card-3"
+            >
               <div>
                 <div className="flex items-center gap-1.5 text-star mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -860,7 +988,7 @@ export default function App() {
                 </div>
                 <span className="text-[10px] font-mono opacity-30">Verified ✓</span>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
